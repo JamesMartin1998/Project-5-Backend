@@ -14,7 +14,7 @@ class Post(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     title = models.CharField(max_length=300, blank=True)
     content = models.TextField(blank=True)
-    category = models.CharField(choices=)
+    category = models.CharField(choices=category_choices, max_length=30)
     image = models.ImageField(
         upload_to="images/", default="../default-post-image_wnd0vc", blank=True
     )
