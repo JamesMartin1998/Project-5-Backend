@@ -2,11 +2,11 @@ from rest_framework import serializers
 from .models import Post
 
 
-class PostSerializer(models.Model):
-    author = models.ReadOnlyField(source="author.username")
-    is_author = models.SerializerMethodField()
-    profile_id = models.ReadOnlyField(source="author.profile.id")
-    profile_image = models.ReadOnlyField(source="author.profile.image.id")
+class PostSerializer(serializers.ModelSerializer):
+    author = serializers.ReadOnlyField(source="author.username")
+    is_author = serializers.SerializerMethodField()
+    profile_id = serializers.ReadOnlyField(source="author.profile.id")
+    profile_image = serializers.ReadOnlyField(source="author.profile.image.id")
 
     def get_is_author(self, obj):
         """
