@@ -14,3 +14,9 @@ class CommentList(generics.ListCreateAPIView):
         Associates comments with a user when created
         """
         serializer.save(author=self.request.user)
+
+
+class CommentDetail(generics.RetrieveUpdateDestroyAPIView):
+    permission_classes = [IsAuthorOrReadOnly]
+    serializer_class = CommentDetailSerializer
+    queryset = Comment.objects.all()
