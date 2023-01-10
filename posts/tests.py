@@ -81,7 +81,6 @@ class PostDetailViewTests(APITestCase):
             {'title': 'testupdated', 'category': 'people'}
         )
         post = Post.objects.filter(pk=2).first()
-        # self.assertEqual(post.title, 'testupdated')
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
     def test_user_can_delete_post_if_author(self):
