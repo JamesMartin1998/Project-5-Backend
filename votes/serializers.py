@@ -25,4 +25,7 @@ class VoteSerializer(serializers.ModelSerializer):
 
 
 class VoteDetailSerializer(VoteSerializer):
+    """
+    Users can move the vote instance to another post
+    """
     post = serializers.ReadOnlyField(source='post.id')

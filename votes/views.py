@@ -17,6 +17,9 @@ class VoteList(generics.ListCreateAPIView):
 
 
 class VoteDetail(generics.RetrieveUpdateDestroyAPIView):
+    """
+    Votes can be edited to change their option, not post
+    """
     permission_classes = [IsOwnerOrReadOnly]
     serializer_class = VoteDetailSerializer
     queryset = Vote.objects.all()
