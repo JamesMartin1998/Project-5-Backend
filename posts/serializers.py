@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from .models import Post
+from favourites.models import Favourite
 
 
 class PostSerializer(serializers.ModelSerializer):
@@ -7,6 +8,7 @@ class PostSerializer(serializers.ModelSerializer):
     is_author = serializers.SerializerMethodField()
     profile_id = serializers.ReadOnlyField(source="author.profile.id")
     profile_image = serializers.ReadOnlyField(source="author.profile.image.id")
+    favourite_id = serializers.SerializerMethodField()
 
     def get_is_author(self, obj):
         """
@@ -33,10 +35,24 @@ class PostSerializer(serializers.ModelSerializer):
             )
         return value
 
+    # get_favourite_id function adapts on Code Institute's Moments Project
+    def get_favourite_id(self, obj):
+        """
+        Returns Favourite id if a user is logged in and has favourited the post
+        Else, returns None
+        """
+        user = self.context['request'].user
+        if user.is_authenticated:
+            favourite = Favourite.objects.filter(
+                owner=user, post=obj
+            ).first()
+            return favourite.id if favourite else None
+        None
+
     class Meta:
         model = Post
         fields = [
             'id', 'author', 'is_author', 'profile_id',
             'profile_image', 'created_at', 'updated_at',
-            'title', 'content', 'category', 'image'
+            'title', 'content', 'category', 'image', 'favourite_id'
         ]
