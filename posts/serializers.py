@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from .models import Post
 from favourites.models import Favourite
+from votes.models import Vote
 
 
 class PostSerializer(serializers.ModelSerializer):
@@ -9,6 +10,7 @@ class PostSerializer(serializers.ModelSerializer):
     profile_id = serializers.ReadOnlyField(source="author.profile.id")
     profile_image = serializers.ReadOnlyField(source="author.profile.image.id")
     favourite_id = serializers.SerializerMethodField()
+    vote_id = serializers.SerializerMethodField()
 
     def get_is_author(self, obj):
         """
@@ -49,10 +51,24 @@ class PostSerializer(serializers.ModelSerializer):
             return favourite.id if favourite else None
         None
 
+    def get_vote_id(self, obj):
+        """
+        Returns Vote id if a user is logged in and has voted on the post
+        Else, returns None
+        """
+        user = self.context['request'].user
+        if user.is_authenticated:
+            vote = Vote.objects.filter(
+                owner=user, post=obj
+            ).first()
+            return vote.id if vote else None
+        None
+
     class Meta:
         model = Post
         fields = [
             'id', 'author', 'is_author', 'profile_id',
             'profile_image', 'created_at', 'updated_at',
-            'title', 'content', 'category', 'image', 'favourite_id'
+            'title', 'content', 'category', 'image', 'favourite_id',
+            'vote_id'
         ]
