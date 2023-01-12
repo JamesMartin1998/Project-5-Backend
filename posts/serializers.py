@@ -11,6 +11,7 @@ class PostSerializer(serializers.ModelSerializer):
     profile_image = serializers.ReadOnlyField(source="author.profile.image.id")
     favourite_id = serializers.SerializerMethodField()
     vote_id = serializers.SerializerMethodField()
+    votes_count = serializers.ReadOnlyField()
 
     def get_is_author(self, obj):
         """
@@ -70,5 +71,5 @@ class PostSerializer(serializers.ModelSerializer):
             'id', 'author', 'is_author', 'profile_id',
             'profile_image', 'created_at', 'updated_at',
             'title', 'content', 'category', 'image', 'favourite_id',
-            'vote_id'
+            'vote_id', 'votes_count'
         ]
