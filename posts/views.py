@@ -21,4 +21,6 @@ class PostList(generics.ListCreateAPIView):
 class PostDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = PostSerializer
     permission_classes = [IsAuthorOrReadOnly]
-    queryset = Post.objects.all()
+    queryset = Post.objects.annotate(
+        votes_count=Count('votes', distinct=True)
+    )
