@@ -22,4 +22,4 @@ class Vote(models.Model):
         unique_together = ['owner', 'post']
 
     def __str__(self):
-        return f'{option} vote by {self.owner} on {self.post}'
+        return f'{self.option} vote by {self.owner} on {self.post}'
