@@ -17,6 +17,12 @@ class PostList(generics.ListCreateAPIView):
         option1_count=option1,
         option2_count=option2
     )
+    filter_backends = [
+        filters.OrderingFilter
+    ]
+    ordering_fields = [
+        'votes_count'
+    ]
 
     def perform_create(self, serializer):
         serializer.save(author=self.request.user)
