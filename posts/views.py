@@ -1,4 +1,5 @@
 from django.db.models import Count, Q
+from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import generics, permissions, filters
 from lets_pick.permissions import IsAuthorOrReadOnly
 from .models import Post
@@ -10,6 +11,10 @@ class PostList(generics.ListCreateAPIView):
     serializer_class = PostSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
+    # queryset annotated to add extra fields that count the number of 
+    # total votes and specific types of votes on a post
+    # https://docs.djangoproject.com/en/4.1/topics/db/aggregation/#filtering-on-annotations
+
     option1 = Count('votes', filter=Q(votes__option='option1'))
     option2 = Count('votes', filter=Q(votes__option='option2'))
     queryset = Post.objects.annotate(
@@ -17,11 +22,19 @@ class PostList(generics.ListCreateAPIView):
         option1_count=option1,
         option2_count=option2
     )
+
+    # ordering filter allows posts to be sorted by number of votes they have
+    # DjangoFilterBackend allows posts to be sorted by category
+    # https://www.django-rest-framework.org/api-guide/filtering/#djangofilterbackend
     filter_backends = [
-        filters.OrderingFilter
+        filters.OrderingFilter,
+        DjangoFilterBackend
     ]
     ordering_fields = [
         'votes_count'
+    ]
+    filterset_fields = [
+        'category'
     ]
 
     def perform_create(self, serializer):
