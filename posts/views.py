@@ -11,7 +11,7 @@ class PostList(generics.ListCreateAPIView):
     serializer_class = PostSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
-    # queryset annotated to add extra fields that count the number of 
+    # queryset annotated to add extra fields that count the number of
     # total votes and specific types of votes on a post
     # https://docs.djangoproject.com/en/4.1/topics/db/aggregation/#filtering-on-annotations
 
