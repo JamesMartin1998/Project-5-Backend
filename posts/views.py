@@ -29,7 +29,8 @@ class PostList(generics.ListCreateAPIView):
     # https://www.django-rest-framework.org/api-guide/filtering/#djangofilterbackend
     filter_backends = [
         filters.OrderingFilter,
-        DjangoFilterBackend
+        DjangoFilterBackend,
+        filters.SearchFilter
     ]
     ordering_fields = [
         'votes_count',
@@ -37,6 +38,10 @@ class PostList(generics.ListCreateAPIView):
     ]
     filterset_fields = [
         'category'
+    ]
+    search_fields = [
+        'author__username',
+        'title'
     ]
 
     def perform_create(self, serializer):
