@@ -20,18 +20,20 @@ class PostList(generics.ListCreateAPIView):
     queryset = Post.objects.annotate(
         votes_count=Count('votes', distinct=True),
         option1_count=option1,
-        option2_count=option2
+        option2_count=option2,
+        comments_count=Count('comment', distinct=True)
     )
 
-    # ordering filter allows posts to be sorted by number of votes they have
-    # DjangoFilterBackend allows posts to be sorted by category
+    # ordering filter allows posts to be sorted by number of votes or comments
+    # they have DjangoFilterBackend allows posts to be sorted by category
     # https://www.django-rest-framework.org/api-guide/filtering/#djangofilterbackend
     filter_backends = [
         filters.OrderingFilter,
         DjangoFilterBackend
     ]
     ordering_fields = [
-        'votes_count'
+        'votes_count',
+        'comments_count'
     ]
     filterset_fields = [
         'category'
@@ -49,5 +51,6 @@ class PostDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Post.objects.annotate(
         votes_count=Count('votes', distinct=True),
         option1_count=option1,
-        option2_count=option2
+        option2_count=option2,
+        comments_count=Count('comment', distinct=True)
     )

@@ -14,6 +14,7 @@ class PostSerializer(serializers.ModelSerializer):
     votes_count = serializers.ReadOnlyField()
     option1_count = serializers.ReadOnlyField()
     option2_count = serializers.ReadOnlyField()
+    comments_count = serializers.ReadOnlyField()
 
     def get_is_author(self, obj):
         """
@@ -73,5 +74,6 @@ class PostSerializer(serializers.ModelSerializer):
             'id', 'author', 'is_author', 'profile_id',
             'profile_image', 'created_at', 'updated_at',
             'title', 'content', 'category', 'image', 'favourite_id',
-            'vote_id', 'votes_count', 'option1_count', 'option2_count'
+            'vote_id', 'votes_count', 'option1_count', 'option2_count',
+            'comments_count'
         ]
