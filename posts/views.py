@@ -24,21 +24,26 @@ class PostList(generics.ListCreateAPIView):
         comments_count=Count('comment', distinct=True)
     )
 
-    # ordering filter allows posts to be sorted by number of votes or comments
-    # they have DjangoFilterBackend allows posts to be sorted by category
-    # https://www.django-rest-framework.org/api-guide/filtering/#djangofilterbackend
     filter_backends = [
         filters.OrderingFilter,
         DjangoFilterBackend,
         filters.SearchFilter
     ]
+    # ordering filter allows posts to be sorted by number of votes or comments
     ordering_fields = [
         'votes_count',
         'comments_count'
     ]
+    # DjangoFilterBackend - posts sorted by category, voted on by users,
+    # favourited by users and owned by users
+    # https://www.django-rest-framework.org/api-guide/filtering/#djangofilterbackend
     filterset_fields = [
-        'category'
+        'category',
+        'votes__owner__profile',
+        'favourites__owner__profile',
+        'author__profile'
     ]
+    # search filter allows posts to be filtered by post title and author name
     search_fields = [
         'author__username',
         'title'
