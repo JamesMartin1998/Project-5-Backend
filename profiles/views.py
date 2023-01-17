@@ -6,12 +6,12 @@ from .serializers import ProfileSerializer
 
 
 class ProfileList(generics.ListAPIView):
-    queryset = Profile.objects.all()
-    # queryset = Profile.objects.annotate(
-    #     posts_count=Count('owner__post', distinct=True),
-    #     votes_made=Count('owner__vote', distinct=True),
-    #     # votes_received=Count("owner__post__votes", distinct=True)
-    # )
+    
+    queryset = Profile.objects.annotate(
+        posts_count=Count('owner__post', distinct=True),
+        votes_made=Count('owner__vote', distinct=True),
+        votes_received=Count("owner__post__votes", distinct=True)
+    ).order_by('-created_at')
     serializer_class = ProfileSerializer
 
 
