@@ -12,8 +12,8 @@ class Post(models.Model):
     author = models.OneToOneField(User, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    title = models.CharField(max_length=300, blank=True)
-    content = models.TextField(blank=True)
+    title = models.CharField(max_length=300)
+    content = models.TextField()
     category = models.CharField(choices=category_choices, max_length=30)
     image = models.ImageField(
         upload_to="images/", default="../default-post-image_wnd0vc", blank=True
