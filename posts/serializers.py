@@ -8,7 +8,7 @@ class PostSerializer(serializers.ModelSerializer):
     author = serializers.ReadOnlyField(source="author.username")
     is_author = serializers.SerializerMethodField()
     profile_id = serializers.ReadOnlyField(source="author.profile.id")
-    profile_image = serializers.ReadOnlyField(source="author.profile.image.id")
+    profile_image = serializers.ReadOnlyField(source="author.profile.image.url")
     favourite_id = serializers.SerializerMethodField()
     vote_id = serializers.SerializerMethodField()
     votes_count = serializers.ReadOnlyField()
