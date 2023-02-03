@@ -4,10 +4,10 @@ from .models import Comment
 
 
 class CommentSerializer(serializers.ModelSerializer):
-    author = serializers.ReadOnlyField(source='owner.username')
+    author = serializers.ReadOnlyField(source='author.username')
     is_author = serializers.SerializerMethodField()
-    profile_id = serializers.ReadOnlyField(source='owner.profile.id')
-    profile_image = serializers.ReadOnlyField(source='owner.profile.image.url')
+    profile_id = serializers.ReadOnlyField(source='author.profile.id')
+    profile_image = serializers.ReadOnlyField(source='author.profile.image.url')
     created_at = serializers.SerializerMethodField()
     updated_at = serializers.SerializerMethodField()
 
