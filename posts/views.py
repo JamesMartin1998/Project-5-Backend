@@ -15,8 +15,8 @@ class PostList(generics.ListCreateAPIView):
     # total votes and specific types of votes on a post
     # https://docs.djangoproject.com/en/4.1/topics/db/aggregation/#filtering-on-annotations
 
-    option1 = Count('votes', filter=Q(votes__option='option1'))
-    option2 = Count('votes', filter=Q(votes__option='option2'))
+    option1 = Count('votes', filter=Q(votes__option='option1'), distinct=True)
+    option2 = Count('votes', filter=Q(votes__option='option2'), distinct=True)
     queryset = Post.objects.annotate(
         votes_count=Count('votes', distinct=True),
         option1_count=option1,
