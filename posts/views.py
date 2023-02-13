@@ -56,8 +56,8 @@ class PostList(generics.ListCreateAPIView):
 class PostDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = PostSerializer
     permission_classes = [IsAuthorOrReadOnly]
-    option1 = Count('votes', filter=Q(votes__option='option1'))
-    option2 = Count('votes', filter=Q(votes__option='option2'))
+    option1 = Count('votes', filter=Q(votes__option='option1'), distinct=True)
+    option2 = Count('votes', filter=Q(votes__option='option2'), distinct=True)
     queryset = Post.objects.annotate(
         votes_count=Count('votes', distinct=True),
         option1_count=option1,
