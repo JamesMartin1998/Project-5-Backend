@@ -133,6 +133,7 @@ Manual testing was carried out throughout the developement of the project using 
 (No create functionality as profiles are created automatically upon user instance creation)
 
 ### /profiles/\<id>/
+
 | Test Case | User Status | CRUD operation | Test Description | Test Result |
 | ----------- | ----------- | ----------- | ----------- | ----------- |
 | 011 | Any | Read | All users can retrieve data for a single profile. | Pass |
@@ -141,15 +142,33 @@ Manual testing was carried out throughout the developement of the project using 
 (No delete functionality, users are unable to delete their profiles)
 
 ### /votes/
+
 | Test Case | User Status | CRUD operation | Test Description | Test Result |
 | ----------- | ----------- | ----------- | ----------- | ----------- |
 | 014 | Any | Read | All users can retrieve data for votes. | Pass |
 | 015 | Logged in | Create | Logged in users can create votes. | Pass |
-| 015 | Logged out | Create | Logged in users cannot create votes. | Pass |
+| 016 | Logged out | Create | Logged in users cannot create votes. | Pass |
 
 ### /votes/\<id>/
+| Test Case | User Status | CRUD operation | Test Description | Test Result |
+| ----------- | ----------- | ----------- | ----------- | ----------- |
+| 017 | Any | Read | All users can retrieve data for a single vote. | Pass |
+| 018 | Not Vote owner | Delete | Users that are not the owner of a vote are unable to delete it. | Pass |
+| 019 | Vote owner | Delete | Users that are the owner of a vote are able to delete it. | Pass |
+(No update functionality, users cannot edit their vote and instead have to delete their vote and vote again)
 
-|  |  |  |  |  |
-|  |  |  |  |  |
-|  |  |  |  |  |
-|  |  |  |  |  |
+### /comments/
+
+| Test Case | User Status | CRUD operation | Test Description | Test Result |
+| ----------- | ----------- | ----------- | ----------- | ----------- |
+| 020 | Any | Read | All users can retrieve data for comments. | Pass |
+| 021 | Logged in | Create | Logged in users can create comments. | Pass |
+| 022 | Logged out | Create | Logged out users cannot create comments. | Pass |
+
+### /comments/\<id>/
+
+| 023 | Any | Read | All users can retrieve data for a single comment. | Pass |
+| 024 | Not comment author | Update | Users that are not the author of a comment cannot update it. | Pass |
+| 025 | Comment author | Update | Users that are the author of a comment can update it. | Pass |
+| 026 | Not comment author | Delete | Users that are not the author of a comment cannot delete it. | Pass |
+| 027 | Comment author | Delete | Users that are the author of a comment can delete it. | Pass |
