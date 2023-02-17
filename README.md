@@ -95,9 +95,7 @@ The API was built to allow the user stories to be achieved on the front end webs
 
 ![Image showing the database models](/images/database-models-total.png)
 
-## Testing 
-
-### Manual Testing
+## Manual Testing
 
 Manual testing was carried out throughout the developement of the project using the Django Rest Framework 'Browsable API'. By creating multiple superusers, I was able to check all CRUD functionality at each valid endpoint.
 
@@ -130,6 +128,7 @@ Manual testing was carried out throughout the developement of the project using 
 | Test Case | User Status | CRUD operation | Test Description | Test Result |
 | ----------- | ----------- | ----------- | ----------- | ----------- |
 | 010 | Any | Read | All users can retrieve data for profiles. | Pass |
+
 (No create functionality as profiles are created automatically upon user instance creation)
 
 ### /profiles/\<id>/
@@ -139,6 +138,7 @@ Manual testing was carried out throughout the developement of the project using 
 | 011 | Any | Read | All users can retrieve data for a single profile. | Pass |
 | 012 | Not Profile owner | Update | Users that are not the owner of a profile are unable to update it. | Pass |
 | 013 | Profile owner | Update | Users that are the owner of a profile are able to update it. | Pass |
+
 (No delete functionality, users are unable to delete their profiles)
 
 ### /votes/
@@ -155,7 +155,8 @@ Manual testing was carried out throughout the developement of the project using 
 | 017 | Any | Read | All users can retrieve data for a single vote. | Pass |
 | 018 | Not Vote owner | Delete | Users that are not the owner of a vote are unable to delete it. | Pass |
 | 019 | Vote owner | Delete | Users that are the owner of a vote are able to delete it. | Pass |
-(No update functionality, users cannot edit their vote and instead have to delete their vote and vote again)
+
+(No update functionality, users cannot edit their vote and instead have to delete their vote and vote again with other option)
 
 ### /comments/
 
@@ -167,8 +168,37 @@ Manual testing was carried out throughout the developement of the project using 
 
 ### /comments/\<id>/
 
+| Test Case | User Status | CRUD operation | Test Description | Test Result |
+| ----------- | ----------- | ----------- | ----------- | ----------- |
 | 023 | Any | Read | All users can retrieve data for a single comment. | Pass |
 | 024 | Not comment author | Update | Users that are not the author of a comment cannot update it. | Pass |
 | 025 | Comment author | Update | Users that are the author of a comment can update it. | Pass |
 | 026 | Not comment author | Delete | Users that are not the author of a comment cannot delete it. | Pass |
 | 027 | Comment author | Delete | Users that are the author of a comment can delete it. | Pass |
+
+### /favourites/
+
+| Test Case | User Status | CRUD operation | Test Description | Test Result |
+| ----------- | ----------- | ----------- | ----------- | ----------- |
+| 028 | Any | Read | All users can retrieve data for favourites. | Pass |
+| 029 | Logged in | Create | Logged in users can create favourites. | Pass |
+| 030 | Logged out | Create | Logged out users cannot create favourites. | Pass |
+
+### /favourites/\<id>/
+
+| Test Case | User Status | CRUD operation | Test Description | Test Result |
+| ----------- | ----------- | ----------- | ----------- | ----------- |
+| 031 | Any | Read | All users can retrieve data for a single favourite. | Pass |
+| 032 | Not favourite owner | Delete | Users that are not the owner of a favourite cannot delete it. | Pass |
+| 032 | Favourite owner | Delete | Users that are the owner of a favourite can delete it. | Pass |
+
+(No update functionality, users cannot edit their favourite)
+
+## Automated Testing
+
+Automated tests were also constructed to test the API. Results for each resource are linked below:
+- [Posts Automated Tests](https://github.com/JamesMartin1998/Project-5-Backend/blob/main/posts/tests.py)
+- [Profiles Automated Tests](https://github.com/JamesMartin1998/Project-5-Backend/blob/main/profiles/tests.py)
+- [Votes Automated Tests](https://github.com/JamesMartin1998/Project-5-Backend/blob/main/votes/tests.py)
+- [Comments Automated Tests](https://github.com/JamesMartin1998/Project-5-Backend/blob/main/comments/tests.py)
+- [Favourites Automated Tests](https://github.com/JamesMartin1998/Project-5-Backend/blob/main/favourites/tests.py)
