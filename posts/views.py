@@ -22,7 +22,7 @@ class PostList(generics.ListCreateAPIView):
         option1_count=option1,
         option2_count=option2,
         comments_count=Count('comment', distinct=True)
-    )
+    ).order_by('-created_at')
 
     filter_backends = [
         filters.OrderingFilter,
