@@ -89,4 +89,67 @@ The API was built to allow the user stories to be achieved on the front end webs
 
 ![Image showing the initial models](/images/database-models.png)
 
+### Database Models
+
+- Serializer used to created more fields.
+
 ![Image showing the database models](/images/database-models-total.png)
+
+## Testing 
+
+### Manual Testing
+
+Manual testing was carried out throughout the developement of the project using the Django Rest Framework 'Browsable API'. By creating multiple superusers, I was able to check all CRUD functionality at each valid endpoint.
+
+### Root
+
+| Test Case | User Status | CRUD operation | Test Description | Test Result |
+| ----------- | ----------- | ----------- | ----------- | ----------- |
+| 001 | Any | Read | All users can retrieve data. | Pass |
+
+### /posts/
+
+| Test Case | User Status | CRUD operation | Test Description | Test Result |
+| ----------- | ----------- | ----------- | ----------- | ----------- |
+| 002 | Any | Read | Logged out can retrieve posts data. | Pass |
+| 003 | Logged in | Create | Logged in users are able to create posts. | Pass |
+| 004 | Logged out | Create | Logged out users are unable to create posts. | Pass |
+
+### /posts/\<id>/
+
+| Test Case | User Status | CRUD operation | Test Description | Test Result |
+| ----------- | ----------- | ----------- | ----------- | ----------- |
+| 005 | Any | Read | All users can retrieve data for a single post. | Pass |
+| 006 | Not post author | Update | Users that are not the author of a post are unable to update it. | Pass |
+| 007 | Post author | Update | User that is the post author can update the post. | Pass |
+| 008 | Not post author | Delete | Users that are not the author of a post are unable to delete it. | Pass |
+| 009 | Post author | Delete | User that is the post author can delete the post. | Pass |
+
+### /profiles/
+
+| Test Case | User Status | CRUD operation | Test Description | Test Result |
+| ----------- | ----------- | ----------- | ----------- | ----------- |
+| 010 | Any | Read | All users can retrieve data for profiles. | Pass |
+(No create functionality as profiles are created automatically upon user instance creation)
+
+### /profiles/\<id>/
+| Test Case | User Status | CRUD operation | Test Description | Test Result |
+| ----------- | ----------- | ----------- | ----------- | ----------- |
+| 011 | Any | Read | All users can retrieve data for a single profile. | Pass |
+| 012 | Not Profile owner | Update | Users that are not the owner of a profile are unable to update it. | Pass |
+| 013 | Profile owner | Update | Users that are the owner of a profile are able to update it. | Pass |
+(No delete functionality, users are unable to delete their profiles)
+
+### /votes/
+| Test Case | User Status | CRUD operation | Test Description | Test Result |
+| ----------- | ----------- | ----------- | ----------- | ----------- |
+| 014 | Any | Read | All users can retrieve data for votes. | Pass |
+| 015 | Logged in | Create | Logged in users can create votes. | Pass |
+| 015 | Logged out | Create | Logged in users cannot create votes. | Pass |
+
+### /votes/\<id>/
+
+|  |  |  |  |  |
+|  |  |  |  |  |
+|  |  |  |  |  |
+|  |  |  |  |  |
