@@ -1,108 +1,92 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Let's Pick API
 
-Welcome JamesMartin1998,
+Let's Vote is a voting app which allows users to make posts about two things and have people vote on which is best. The website aims to be a fun, social place to for people to light-heartedly share their interests with other people. Users are able to be creative and share their interests with other users in numerous ways. For example, users can interact through posting content for other uses to see, voting on other users' posts and also commenting on posts. 
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+The Let's Pick API is built using the Django Rest Framework. Its purpose is to provide data to the front end website and control authenticaion.
 
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **September 1, 2021**
+The project was built to store 'Posts', 'Votes', 'Comments', 'Favourites' and 'Profiles' data. Each resource was created as a Django app.
 
-## Gitpod Reminders
+- Models were used define the core data fields for each resource.
+- Serializers were used to define additional fields for each resource and convert between Python and JSON data.
+- URLs were used to create 2 URLs for each resource - a list URL (where all instances of a resource can be accessed) and a details URL (where a specific instance could be accessed).
+- Generic views were used to create 2 views for each resource. Firstly, a list view with a collection of all data instances for the specific resource. This allowed instances to be viewed and created. Secondly, a detail view with data for an individual instance for a specific resource. This allowed for additional CRUD functionality, such as updating and deleting an instance.
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+Examples of authentication include:
+- Using permission classes to limit access to functionality in specific views.
+    - IsAuthenticatedOrReadOnly restricts logged out users to view data, not manipulate it.
+    - IsAuthorOrReadOnly allows only the author of a resource (post/comment) to manipulate the resource, other users can view the data.
+    - Is OwnerOrReadOnly allows only the owner of a resource (vote/favourite/profile) to manipulate the resource, other users can view the data.
 
-`python3 -m http.server`
+## Project Links
 
-A blue button should appear to click: _Make Public_,
+- [Deployed Front End Site](https://lets-pick-app.herokuapp.com/)
+- [Repository for Front End Site](https://github.com/JamesMartin1998/lets-pick)
+- [Deployed API Site](https://lets-pick.herokuapp.com/)
+- [Repository for API Site](https://github.com/JamesMartin1998/Project-5-Backend)
 
-Another blue button should appear to click: _Open Browser_.
+## User Stories
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+The API was built to allow the user stories to be achieved on the front end website.
 
-A blue button should appear to click: _Make Public_,
+### Epic 1: Navigation
 
-Another blue button should appear to click: _Open Browser_.
+1. As a **user** I can **view a navbar on each page** so that **I can use the links to change my current page**.
+2. As a **user** I can **navigate between pages quickly** so that **I am not delayed by unnecessary page refreshes**.
+3. As a **user**, I can **see the log in and sign up links when logged out, compared to the log out link when logged in**, so that **I can access the appropriate actions accordingly**.
 
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+### Epic 2: Authentication
 
-To log into the Heroku toolbelt CLI:
+1. As a **user**, I can **sign up for an account** so that **I can have access to more functionality on the website**.
+2. As a **user**, I can **sign in to my account** so that **I can access to additional functionality**.
+3. As a **user**, I can **see my logged in status** so that **I know if am currently logged in or not**.
+4. As a **user**, I can **see users’ avatars** so that **I can identify specify profiles easily**.
 
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
+### Epic 3: Posts
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
+1. As a **logged in user**, I can **create posts** so that **I can create content on the website**.
+2. As a **user**, I can **click on a post to view it individually** so that **I can view more details such as its comments**.
+3. : As a **post author**, I can **edit my post** so that **I can correct the post’s details**.
+4. As a **post author** , I can **delete my own post** so that **it is removed from my profile**.
+5. As a **user**, I can **view the most recent posts at the top of a continuous feed** so that **I see new content first**.
+6. As a **user**, I can **search for specific posts by post title and author** so that **I can find posts that I am interested in**.
+7. As a **user**, I can **filter posts by selecting a category** so that **I can see posts that I am interested in**.
+8. As a **user**, I can **view a feed on posts by scrolling down continuously to load more posts** so that **I don’t have to reload new pages with more posts**.
+9. As a **user**, I can **view a post’s page** so that **I can read comments about the post**.
 
-------
 
-## Release History
+### Epic 4: Votes
 
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
+1. As a **logged in user**, I can **vote on a post** so that **I can share my preference**.
+2. As a **logged in user**, I can **view posts that I have voted on previously** so that **I can revisit the results of the posts**.
+3. As a **logged in user**, I can **remove my vote on a post** so that **I can vote again on the post to change my vote option**.
 
-**September 1 2021:** Remove `PGHOSTADDR` environment variable.
 
-**July 19 2021:** Remove `font_fix` script now that the terminal font issue is fixed.
+### Epic 5: Comments
 
-**July 2 2021:** Remove extensions that are not available in Open VSX.
+1. As a **logged in user**, I can **create a comment on a post** so that **I can share my opinion**.
+2. As a **user**, I can **see the date of a comment** so that **I know how old a comment is**.
+3. As a **user**, I can **view comments on a post** so that **I can read other users’ opinions**.
+4. As a **comment author**, I can **edit my comment** so that **I can correct its detail**.
+5. As a **comment author**, I can **delete my comment** so that **I can remove it from the post**.
 
-**June 30 2021:** Combined the P4 and P5 templates into one file, added the uptime script. See the FAQ at the end of this file.
+### Epic 6: Favourites
 
-**June 10 2021:** Added: `font_fix` script and alias to fix the Terminal font issue
+1. As a **logged in user**, I can **favourite a post** so that **I can save my favourite posts**.
+2. As a **loggeed in user**, I can **view my favourite posts in a feed** so that **I can revisit my favourite posts**.
+3. As a **logged in user**, I can **remove a favourite on a post** so that **it no longer appears in my favourites feed**.
 
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
+### Epic 7: Profile
 
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
+1. As a **user**, I can **view users’ profiles** so that **I can learn more about them**.
+2. As a **user**, I can **view a user’s statistics** so that **I can see how many posts, votes received and votes made they have**.
+3. As a **user**, I can **see all of a user’s posts on their profile page** so that **I can view more content by users I like**.
+4. As a **profile owner**, **I can edit my profile** so that **I can change details such as my profile image and bio**.
+5. As a **user**, I can **edit my username and password** so that **I can keep my account secure**.
 
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
+## Models and Database
 
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
+### Initial Models
 
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
+![Image showing the initial models](/images/database-models.png)
 
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
-
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
-
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
-
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
-
-------
-
-## FAQ about the uptime script
-
-**Why have you added this script?**
-
-It will help us to calculate how many running workspaces there are at any one time, which greatly helps us with cost and capacity planning. It will help us decide on the future direction of our cloud-based IDE strategy.
-
-**How will this affect me?**
-
-For everyday usage of Gitpod, it doesn’t have any effect at all. The script only captures the following data:
-
-- An ID that is randomly generated each time the workspace is started.
-- The current date and time
-- The workspace status of “started” or “running”, which is sent every 5 minutes.
-
-It is not possible for us or anyone else to trace the random ID back to an individual, and no personal data is being captured. It will not slow down the workspace or affect your work.
-
-**So….?**
-
-We want to tell you this so that we are being completely transparent about the data we collect and what we do with it.
-
-**Can I opt out?**
-
-Yes, you can. Since no personally identifiable information is being captured, we'd appreciate it if you let the script run; however if you are unhappy with the idea, simply run the following commands from the terminal window after creating the workspace, and this will remove the uptime script:
-
-```
-pkill uptime.sh
-rm .vscode/uptime.sh
-```
-
-**Anything more?**
-
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
-
----
-
-Happy coding!
+![Image showing the database models](/images/database-models-total.png)
