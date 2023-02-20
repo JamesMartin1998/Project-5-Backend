@@ -1,3 +1,4 @@
+# Code based from Code Institute's Django Rest Framework project
 from django.db.models import Count, Q
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import generics, permissions, filters
@@ -8,6 +9,9 @@ from votes.models import Vote
 
 
 class PostList(generics.ListCreateAPIView):
+    """
+    Users can list posts. Logged in users can create posts.
+    """
     serializer_class = PostSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
@@ -54,6 +58,9 @@ class PostList(generics.ListCreateAPIView):
 
 
 class PostDetail(generics.RetrieveUpdateDestroyAPIView):
+    """
+    Users can read a post, author can edit or delete their post
+    """
     serializer_class = PostSerializer
     permission_classes = [IsAuthorOrReadOnly]
     option1 = Count('votes', filter=Q(votes__option='option1'), distinct=True)

@@ -1,3 +1,4 @@
+# Code based from Code Institute's Django Rest Framework project
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .settings import (

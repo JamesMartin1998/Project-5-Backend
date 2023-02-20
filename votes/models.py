@@ -1,3 +1,4 @@
+# Code based from Code Institute's Django Rest Framework project
 from django.db import models
 from django.contrib.auth.models import User
 from posts.models import Post
@@ -8,6 +9,9 @@ option_choices = [
 
 
 class Vote(models.Model):
+    """
+    Vote model. option field allows options from option_choices list
+    """
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     post = models.ForeignKey(
         Post,

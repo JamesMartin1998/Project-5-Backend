@@ -1,3 +1,4 @@
+# Code based from Code Institute's Django Rest Framework project
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -9,6 +10,10 @@ category_choices = [
 
 
 class Post(models.Model):
+    """
+    Post model. category field allows options from the category_choices list
+    default image from Code Institute's Django Rest Framework project
+    """
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

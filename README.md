@@ -287,3 +287,12 @@ This project was deployed to Heroku by:
 - The live site can be found here: https://lets-pick.herokuapp.com/
 
 ## Credits
+
+- Code Institute's Django Rest Framework Project was used to lay the foundations of this project and was adapted on to create a unique project. (https://github.com/Code-Institute-Solutions/drf-api/tree/ed54af9450e64d71bc4ecf16af0c35d00829a106)
+- Cloudinary was used to store images.
+- Default Profile image and Post image used from Code Institute's Django Rest Framework project.
+- Django Rest Framework Documentation was used to code with:
+    - Django Filter Backend (https://www.django-rest-framework.org/api-guide/filtering/#djangofilterbackend)
+    - Filterting on annotations (https://docs.djangoproject.com/en/4.1/topics/db/aggregation/#filtering-on-annotations)
+- PostgreSQL database provided by ElephantSQL.com
+- Thanks to my mentor, Spencer, for his guidance throughout the project.

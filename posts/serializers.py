@@ -1,3 +1,4 @@
+# Code based from Code Institute's Django Rest Framework project
 from rest_framework import serializers
 from .models import Post
 from favourites.models import Favourite
@@ -5,10 +6,14 @@ from votes.models import Vote
 
 
 class PostSerializer(serializers.ModelSerializer):
+    """
+    Add more fields to the Post model
+    """
     author = serializers.ReadOnlyField(source="author.username")
     is_author = serializers.SerializerMethodField()
     profile_id = serializers.ReadOnlyField(source="author.profile.id")
-    profile_image = serializers.ReadOnlyField(source="author.profile.image.url")
+    profile_image = serializers.ReadOnlyField(
+        source="author.profile.image.url")
     favourite_id = serializers.SerializerMethodField()
     vote_id = serializers.SerializerMethodField()
     votes_count = serializers.ReadOnlyField()

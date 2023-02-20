@@ -1,3 +1,4 @@
+# Code based from Code Institute's Django Rest Framework project
 from rest_framework import generics, permissions
 from lets_pick.permissions import IsOwnerOrReadOnly
 from .models import Vote
@@ -5,6 +6,9 @@ from .serializers import VoteSerializer, VoteDetailSerializer
 
 
 class VoteList(generics.ListCreateAPIView):
+    """
+    Users can list votes. Logged in users can create votes
+    """
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     serializer_class = VoteSerializer
     queryset = Vote.objects.all()
@@ -18,7 +22,8 @@ class VoteList(generics.ListCreateAPIView):
 
 class VoteDetail(generics.RetrieveDestroyAPIView):
     """
-    Votes can be edited to change their option, not post
+    Users can read votes. Owners can destroy their votes.
+    Votes can be destroyed and recreated to change their option
     """
     permission_classes = [IsOwnerOrReadOnly]
     serializer_class = VoteDetailSerializer
