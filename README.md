@@ -202,3 +202,88 @@ Automated tests were also constructed to test the API. Results for each resource
 - [Votes Automated Tests](https://github.com/JamesMartin1998/Project-5-Backend/blob/main/votes/tests.py)
 - [Comments Automated Tests](https://github.com/JamesMartin1998/Project-5-Backend/blob/main/comments/tests.py)
 - [Favourites Automated Tests](https://github.com/JamesMartin1998/Project-5-Backend/blob/main/favourites/tests.py)
+
+## Technologies Used
+
+### Main Languages Used
+
+- Python
+
+### Dependencies and Programs Used
+- Django
+- djangorestframework
+- Cloudinary
+- django-clouinary-storage
+- dj-rest-auth
+- django-allauth 
+- django-cors-headers 
+- django-filters
+- djangorestframework-simplejwt
+- gunicorn
+- Pillow
+- psycopg2 
+- oauthlib
+- PyJWT
+- python3-openid
+- pytz
+- requests-oauthlib
+- sqlparse
+- PostgreSQL
+- ElephantSQL 
+- Gitpod
+- GitHub
+- Heroku
+
+## Deployment
+
+### Run Locally
+
+- Manually Downloading the Repository:
+
+    - Opening the project repository at: https://github.com/JamesMartin1998/Project-5-Backend.
+    - Opening the dropdown on the 'code' button.
+    - Downloading the zip file.
+    - Extracting the files from the zip file into a new folder on your computer.
+    - Opening the folder in an IDE of your choice.
+    - Type "pip install requirements.txt" in the terminal and press "Enter"
+    - creating an env.py file, importing os and creating the following variables:
+        - os.environ['DATABASE_URL'] = *enter a database url*
+        - os.environ['SECRET_KEY'] = *enter any secret key*
+        - os.environ['CLOUDINARY_URL'] = *enter your cloudinary url*
+    - Type "python manage.py makemigrations" and press "Enter".
+    - Type "python manage.py migrate" and press "Enter".
+
+- Cloning the Repository:
+
+    - Opening the project repository at: https://github.com/JamesMartin1998/Project-5-Backend.
+    - Opening the dropdown on the 'code' button.
+    - Copying the link under the HTTPS heading (https://github.com/JamesMartin1998/Project-5-Backend.git).
+    - Opening an IDE of your choice (must have Git support or relevant git extension).
+    - Open the terminal and create a directory to store the repository.
+    - Type "git clone https://github.com/JamesMartin1998/Project-5-Backend.git" and press enter in the terminal.
+    - Type "pip install requirements.txt" and press "Enter".
+    - creating an env.py file, importing os and creating the following variables:
+        - os.environ['DATABASE_URL'] = *enter a database url*
+        - os.environ['SECRET_KEY'] = *enter any secret key*
+        - os.environ['CLOUDINARY_URL'] = *enter your cloudinary url*
+    - Type "python manage.py makemigrations" and press "Enter".
+    - Type "python manage.py migrate" and press "Enter".
+
+### Deploying to Heroku
+During the development of the project, version control was used by committing and pushing the code to GitHub. The GitHub repository can be found here: https://github.com/JamesMartin1998/Project-5-Backend
+
+This project was deployed to Heroku by:
+- Within Gitpod, adding the dependencies to the requirements file by typing 'pip3 freeze > requirements.txt' in the terminal.
+- Committing and pushing the code to GitHub.
+- On the Heroku website, clicking 'Create New App'.
+- Setting the name and region and pressing 'Create App'.
+- Clicking the 'Settings' tab.
+- Setting config vars for the keys: CLOUDINARY_URL, DATABASE_URL, ALLOWED_HOST, CLIENT_ORIGIN, CLIENT_ORIGIN_DEV and SECRET_KEY.
+- Clicking 'Add Buildpack', 'Python', 'Save Changes'.
+- Clicking the 'Deploy' tab.
+- Clicking 'Connect to GitHub', search for repository, click 'Connect'.
+- Enabling Manual Deploy. Check for successful message.
+- Enabling Automatic Deploys.
+- The live site can be found here: https://lets-pick.herokuapp.com/
+
+## Credits
