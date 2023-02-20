@@ -95,6 +95,10 @@ The API was built to allow the user stories to be achieved on the front end webs
 
 ![Image showing the database models](/images/database-models-total.png)
 
+## Validation testing
+
+All python files (excluding settings.py, env.py and migrations) were passed into the "CI Python Linter" to check that the code conforms to PEP8 guidelines. No validation errors were found.
+
 ## Manual Testing
 
 Manual testing was carried out throughout the developement of the project using the Django Rest Framework 'Browsable API'. By creating multiple superusers, I was able to check all CRUD functionality at each valid endpoint.
@@ -295,4 +299,5 @@ This project was deployed to Heroku by:
     - Django Filter Backend (https://www.django-rest-framework.org/api-guide/filtering/#djangofilterbackend)
     - Filterting on annotations (https://docs.djangoproject.com/en/4.1/topics/db/aggregation/#filtering-on-annotations)
 - PostgreSQL database provided by ElephantSQL.com
+- Python code was validated using the "CI Python Linter" (https://pep8ci.herokuapp.com/)
 - Thanks to my mentor, Spencer, for his guidance throughout the project.
