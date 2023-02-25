@@ -1,6 +1,6 @@
 # Let's Pick API
 
-Let's Vote is a voting app which allows users to make posts about two things and have people vote on which is best. The website aims to be a fun, social place to for people to light-heartedly share their interests with other people. Users are able to be creative and share their interests with other users in numerous ways. For example, users can interact through posting content for other uses to see, voting on other users' posts and also commenting on posts. 
+Let's Vote is a voting app which allows users to make posts about two things and have people vote on which is best. The website aims to be a fun, social place for people to light-heartedly share their interests with other people. Users are able to be creative and share their interests with other users in numerous ways. For example, users can interact through posting content for other uses to see, voting on other users' posts and also commenting on posts. 
 
 The Let's Pick API is built using the Django Rest Framework. Its purpose is to provide data to the front end website and control authenticaion.
 
@@ -30,8 +30,8 @@ The API was built to allow the user stories to be achieved on the front end webs
 
 ### Epic 1: Navigation
 
-1. As a **user** I can **view a navbar on each page** so that **I can use the links to change my current page**.
-2. As a **user** I can **navigate between pages quickly** so that **I am not delayed by unnecessary page refreshes**.
+1. As a **user**, I can **view a navbar on each page** so that **I can use the links to change my current page**.
+2. As a **user**, I can **navigate between pages quickly** so that **I am not delayed by unnecessary page refreshes**.
 3. As a **user**, I can **see the log in and sign up links when logged out, compared to the log out link when logged in**, so that **I can access the appropriate actions accordingly**.
 
 ### Epic 2: Authentication
@@ -39,27 +39,25 @@ The API was built to allow the user stories to be achieved on the front end webs
 1. As a **user**, I can **sign up for an account** so that **I can have access to more functionality on the website**.
 2. As a **user**, I can **sign in to my account** so that **I can access to additional functionality**.
 3. As a **user**, I can **see my logged in status** so that **I know if am currently logged in or not**.
-4. As a **user**, I can **see users’ avatars** so that **I can identify specify profiles easily**.
+4. As a **user**, I can **see users’ avatars** so that **I can identify specific profiles easily**.
 
 ### Epic 3: Posts
 
 1. As a **logged in user**, I can **create posts** so that **I can create content on the website**.
 2. As a **user**, I can **click on a post to view it individually** so that **I can view more details such as its comments**.
-3. : As a **post author**, I can **edit my post** so that **I can correct the post’s details**.
+3. As a **post author**, I can **edit my post** so that **I can correct the post’s details**.
 4. As a **post author** , I can **delete my own post** so that **it is removed from my profile**.
 5. As a **user**, I can **view the most recent posts at the top of a continuous feed** so that **I see new content first**.
 6. As a **user**, I can **search for specific posts by post title and author** so that **I can find posts that I am interested in**.
 7. As a **user**, I can **filter posts by selecting a category** so that **I can see posts that I am interested in**.
-8. As a **user**, I can **view a feed on posts by scrolling down continuously to load more posts** so that **I don’t have to reload new pages with more posts**.
+8. As a **user**, I can **view a feed of posts by scrolling down continuously to load more posts** so that **I don’t have to reload new pages with more posts**.
 9. As a **user**, I can **view a post’s page** so that **I can read comments about the post**.
-
 
 ### Epic 4: Votes
 
 1. As a **logged in user**, I can **vote on a post** so that **I can share my preference**.
 2. As a **logged in user**, I can **view posts that I have voted on previously** so that **I can revisit the results of the posts**.
 3. As a **logged in user**, I can **remove my vote on a post** so that **I can vote again on the post to change my vote option**.
-
 
 ### Epic 5: Comments
 
